@@ -2,3 +2,4 @@
 echo "Ceci@2802" | docker login -u "raffojoao1991" --password-stdin
 docker tag asp-02 raffojoao1991/asp-02
 docker push raffojoao1991/asp-02
+echo "Finalizado deploy"
