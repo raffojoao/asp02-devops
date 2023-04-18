@@ -18,18 +18,20 @@ script:
   - sleep 3
   - bandit -r .
   - curl -s http://localhost:5000 | grep "Valor 1"
-  - chmod +x ngrok
-  - ngrok authtoken 2NnGzzQUH9cESqpCLO8vqhsQI2U_7dzrU175WK3ecos29PsAV
-  # - ngrok config add-authtoken 2NnGzzQUH9cESqpCLO8vqhsQI2U_7dzrU175WK3ecos29PsAV
-  - ngrok http 5000 &
-  - sleep 10
-  - curl -s http://localhost:4040/api/tunnels
+  # - chmod +x ngrok
+  # - ngrok authtoken 2NnGzzQUH9cESqpCLO8vqhsQI2U_7dzrU175WK3ecos29PsAV
+  # - ngrok http 5000 &
+  # - sleep 10
   # - curl -s http://localhost:4040/api/tunnels | grep -o "https://.*\.ngrok.io" > ngrok_url.txt
 deploy:
   provider: script
   # script: bash docker_push
   script:
     - echo "Ceci@2802" | docker login -u "raffojoao1991" --password-stdin
+    - chmod +x ngrok
+    - ngrok authtoken 2NnGzzQUH9cESqpCLO8vqhsQI2U_7dzrU175WK3ecos29PsAV
+    - ngrok http 5000 &
+    - sleep 10
     - docker tag asp-02 raffojoao1991/asp-02
     - docker push raffojoao1991/asp-02
     - echo "Finalizado deploy"
