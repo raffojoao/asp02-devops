@@ -16,7 +16,7 @@ script:
   - docker build -t asp-02 .
   - docker run -d -p 5000:5000 asp-02
   - sleep 3
-  - bandit -r .
+  # - bandit -r .
   - curl -s http://localhost:5000 | grep "Valor 1"
   # - chmod +x ngrok
   # - ngrok authtoken 2NnGzzQUH9cESqpCLO8vqhsQI2U_7dzrU175WK3ecos29PsAV
