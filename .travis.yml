@@ -1,0 +1,23 @@
+language: python
+python:
+  - '3.8'
+services:
+  - docker
+before_install:
+  - pip install -U pip
+install:
+  - pip install -r requirements.txt
+script:
+  - bandit -r .
+  - docker build -t asp-02 .
+  - docker run -d -p 5000:5000 asp-02
+  - sleep 3
+  - curl -s http://localhost:5000 | grep "Valor 1"
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
+
+after_success:
+  - bash ./telegram_notification.sh
