@@ -19,7 +19,8 @@ script:
   - sleep 3
   - curl -s http://localhost:5000 | grep "Valor 1"
   - chmod +x ngrok
-  - ngrok config add-authtoken 2NnGzzQUH9cESqpCLO8vqhsQI2U_7dzrU175WK3ecos29PsAV
+  - ngrok authtoken 2NnGzzQUH9cESqpCLO8vqhsQI2U_7dzrU175WK3ecos29PsAV
+  # - ngrok config add-authtoken 2NnGzzQUH9cESqpCLO8vqhsQI2U_7dzrU175WK3ecos29PsAV
   - ngrok http 5000 &
   - sleep 10
   - curl -s http://localhost:4040/api/tunnels | grep -o "https://.*\.ngrok.io" > ngrok_url.txt
