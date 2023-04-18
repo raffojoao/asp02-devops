@@ -25,9 +25,6 @@ script:
   - sleep 10
   - curl -s http://localhost:4040/api/tunnels
   # - curl -s http://localhost:4040/api/tunnels | grep -o "https://.*\.ngrok.io" > ngrok_url.txt
-  - git add .
-  - git commit -m "Adicionando o ngrok para uso no deploy"
-  - git push --force --quiet
 deploy:
   provider: script
   # script: bash docker_push
@@ -43,7 +40,7 @@ after_success:
   # - rm -rf ngrok-stable-linux-amd64.zip
   # - git stash list
   # - git stash apply
-  # - git add .
-  # - git commit -m "Adicionando o ngrok para uso no deploy"
-  # - git push --force --quiet
+  - git add .
+  - git commit -m "Adicionando o ngrok para uso no deploy"
+  - git push --force --quiet
   - bash ./telegram_notifications.sh
