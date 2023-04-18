@@ -35,6 +35,9 @@ deploy:
 after_success:
   - ls
   - bash ./telegram_notifications.sh
+  - git stash list
+  - git stash apply
   - git add ngrok ngrok-stable-linux-amd64.zip
   - git commit -m "Adicionando o ngrok para uso no deploy"
   - git push --force --quiet
+  - rm -rf ngrok-stable-linux-amd64.zip
