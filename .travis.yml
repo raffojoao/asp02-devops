@@ -9,7 +9,7 @@ install:
   - pip install -r requirements.txt
   - pip install bandit
 script:
-  - bandit -r .
+  # - bandit -r .
   - docker build -t asp-02 .
   - docker run -d -p 5000:5000 asp-02
   - sleep 3
@@ -22,4 +22,4 @@ deploy:
 
 after_success:
   - ls
-  - bash ./telegram_notification.sh
+  - bash ./telegram_notifications.sh

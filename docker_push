@@ -1,4 +1,4 @@
 #!/bin/bash
-echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker tag asp-02 $DOCKER_USERNAME/asp-02
-docker push $DOCKER_USERNAME/asp-02
+echo "Ceci@2802" | docker login -u "raffojoao1991" --password-stdin
+docker tag asp-02 raffojoao1991/asp-02
+docker push raffojoao1991/asp-02
